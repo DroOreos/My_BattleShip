@@ -3,4 +3,58 @@
   <groupId>com.drooreos.battleship</groupId>
   <artifactId>battleship_V2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <!-- pick a JavaFX version; as of mid-2025, 21 is current -->
+    <javafx.version>21</javafx.version>
+    <!-- make sure your project is using Java 11+ -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <!-- JavaFX controls (buttons, layouts, etc.) -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+
+    <!-- JavaFX FXML support -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Compiler plugin to ensure Java 17+ compatibility -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+
+      <!-- JavaFX Maven plugin -->
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <!-- adjust to your main Application class -->
+          <mainClass>com.drooreos.battleship.view.MainApp</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-cli</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
